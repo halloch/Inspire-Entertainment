@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Perfil - Inspire Entertainment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#fff8fc;
+color:#222;
+}
+
+/* BANNER */
+
+.banner{
+
+height:320px;
+
+background:
+linear-gradient(
+135deg,
+#a855f7,
+#ec4899
+);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.banner::before{
+
+content:"";
+
+position:absolute;
+
+width:500px;
+height:500px;
+
+background:rgba(255,255,255,.15);
+
+border-radius:50%;
+
+right:-100px;
+top:-100px;
+
+}
+
+/* PERFIL */
+
+.profile{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:0 30px;
+
+position:relative;
+
+}
+
+.avatar{
+
+width:180px;
+height:180px;
+
+border-radius:50%;
+
+border:8px solid white;
+
+object-fit:cover;
+
+margin-top:-90px;
+
+background:white;
+
+}
+
+.info{
+
+margin-top:20px;
+
+}
+
+.name{
+
+font-size:38px;
+font-weight:800;
+
+}
+
+.username{
+
+color:#777;
+
+margin-top:5px;
+
+}
+
+.bio{
+
+margin-top:20px;
+
+line-height:1.8;
+
+max-width:700px;
+
+}
+
+/* ESTATÍSTICAS */
+
+.stats{
+
+display:flex;
+
+gap:50px;
+
+margin-top:30px;
+
+flex-wrap:wrap;
+
+}
+
+.stat{
+
+text-align:center;
+
+}
+
+.stat h3{
+
+font-size:30px;
+
+color:#a855f7;
+
+}
+
+.stat p{
+
+color:#666;
+
+}
+
+/* BOTÕES */
+
+.actions{
+
+margin-top:25px;
+
+display:flex;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+}
+
+.btn{
+
+padding:14px 25px;
+
+border:none;
+
+border-radius:30px;
+
+cursor:pointer;
+
+font-weight:600;
+
+}
+
+.follow{
+
+background:#a855f7;
+
+color:white;
+
+}
+
+.message{
+
+background:white;
+
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+/* ABAS */
+
+.tabs{
+
+margin-top:50px;
+
+display:flex;
+
+gap:20px;
+
+border-bottom:2px solid #eee;
+
+padding-bottom:15px;
+
+}
+
+.tab{
+
+cursor:pointer;
+
+font-weight:600;
+
+}
+
+.active{
+
+color:#a855f7;
+
+}
+
+/* CONTEÚDO */
+
+.content{
+
+margin-top:40px;
+
+}
+
+/* POSTS */
+
+.posts-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:25px;
+
+}
+
+.post{
+
+background:white;
+
+border-radius:25px;
+
+overflow:hidden;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.post img{
+
+width:100%;
+
+height:220px;
+
+object-fit:cover;
+
+}
+
+.post-info{
+
+padding:20px;
+
+}
+
+/* PORTFÓLIO */
+
+.portfolio{
+
+display:none;
+
+grid-template-columns:
+repeat(auto-fit,minmax(300px,1fr));
+
+gap:25px;
+
+}
+
+.project{
+
+background:white;
+
+padding:25px;
+
+border-radius:25px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+.name{
+
+font-size:28px;
+
+}
+
+.avatar{
+
+width:140px;
+height:140px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="banner"></div>
+
+<div class="profile">
+
+<img
+class="avatar"
+src="https://i.pravatar.cc/400?img=12">
+
+<div class="info">
+
+<h1 class="name">
+Marcos Antônio
+</h1>
+
+<p class="username">
+@marcos
+</p>
+
+<p class="bio">
+
+🎬 Criador de projetos audiovisuais
+
+🎵 Música • Cinema • Tecnologia
+
+🚀 Fundador da Inspire Entertainment
+
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<h3>245</h3>
+<p>Posts</p>
+</div>
+
+<div class="stat">
+<h3>18k</h3>
+<p>Seguidores</p>
+</div>
+
+<div class="stat">
+<h3>842</h3>
+<p>Seguindo</p>
+</div>
+
+</div>
+
+<div class="actions">
+
+<button
+class="btn follow"
+onclick="followUser()">
+
+Seguir
+
+</button>
+
+<button
+class="btn message">
+
+Mensagem
+
+</button>
+
+</div>
+
+</div>
+
+<div class="tabs">
+
+<div
+class="tab active"
+onclick="showPosts()">
+
+Posts
+
+</div>
+
+<div
+class="tab"
+onclick="showPortfolio()">
+
+Portfólio
+
+</div>
+
+</div>
+
+<div class="content">
+
+<div
+class="posts-grid"
+id="postsSection">
+
+<div class="post">
+
+<img src="https://picsum.photos/500/300?1">
+
+<div class="post-info">
+
+<h3>Novo Projeto</h3>
+
+<p>
+
+Conceito inicial do próximo curta.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="post">
+
+<img src="https://picsum.photos/500/300?2">
+
+<div class="post-info">
+
+<h3>Arte Conceitual</h3>
+
+<p>
+
+Estudo visual para personagem.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="post">
+
+<img src="https://picsum.photos/500/300?3">
+
+<div class="post-info">
+
+<h3>Storyboard</h3>
+
+<p>
+
+Planejamento das cenas.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div
+class="portfolio"
+id="portfolioSection">
+
+<div class="project">
+
+<h3>🎬 Curta Alter Ego</h3>
+
+<p>
+
+Produção audiovisual independente.
+
+</p>
+
+</div>
+
+<div class="project">
+
+<h3>🎵 Hall Music</h3>
+
+<p>
+
+Projeto musical autoral.
+
+</p>
+
+</div>
+
+<div class="project">
+
+<h3>📺 Inspire Originals</h3>
+
+<p>
+
+Séries exclusivas da plataforma.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function followUser(){
+
+const btn =
+document.querySelector(".follow");
+
+if(btn.innerText==="Seguir"){
+
+btn.innerText="Seguindo";
+
+}else{
+
+btn.innerText="Seguir";
+
+}
+
+}
+
+function showPosts(){
+
+document
+.getElementById("postsSection")
+.style.display="grid";
+
+document
+.getElementById("portfolioSection")
+.style.display="none";
+
+}
+
+function showPortfolio(){
+
+document
+.getElementById("postsSection")
+.style.display="none";
+
+document
+.getElementById("portfolioSection")
+.style.display="grid";
+
+}
+
+</script>
+
+</body>
+</html>
