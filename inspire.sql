@@ -1,0 +1,288 @@
+CREATE DATABASE IF NOT EXISTS inspire;
+USE inspire;
+
+-- USUÁRIOS
+
+CREATE TABLE users (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+name VARCHAR(100) NOT NULL,
+
+username VARCHAR(50) UNIQUE NOT NULL,
+
+email VARCHAR(150) UNIQUE NOT NULL,
+
+password VARCHAR(255) NOT NULL,
+
+avatar VARCHAR(255),
+
+banner VARCHAR(255),
+
+bio TEXT,
+
+role ENUM('user','admin') DEFAULT 'user',
+
+verified BOOLEAN DEFAULT FALSE,
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
+
+-- POSTS
+
+CREATE TABLE posts (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+user_id INT NOT NULL,
+
+content TEXT,
+
+image VARCHAR(255),
+
+video VARCHAR(255),
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE
+
+);
+
+-- CURTIDAS
+
+CREATE TABLE likes (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+user_id INT NOT NULL,
+
+post_id INT NOT NULL,
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE,
+
+FOREIGN KEY (post_id)
+REFERENCES posts(id)
+ON DELETE CASCADE
+
+);
+
+-- COMENTÁRIOS
+
+CREATE TABLE comments (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+user_id INT NOT NULL,
+
+post_id INT NOT NULL,
+
+comment TEXT NOT NULL,
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE,
+
+FOREIGN KEY (post_id)
+REFERENCES posts(id)
+ON DELETE CASCADE
+
+);
+
+-- SEGUIDORES
+
+CREATE TABLE followers (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+follower_id INT NOT NULL,
+
+following_id INT NOT NULL,
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY (follower_id)
+REFERENCES users(id)
+ON DELETE CASCADE,
+
+FOREIGN KEY (following_id)
+REFERENCES users(id)
+ON DELETE CASCADE
+
+);
+
+-- MENSAGENS
+
+CREATE TABLE messages (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+sender_id INT NOT NULL,
+
+receiver_id INT NOT NULL,
+
+message TEXT NOT NULL,
+
+is_read BOOLEAN DEFAULT FALSE,
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY (sender_id)
+REFERENCES users(id)
+ON DELETE CASCADE,
+
+FOREIGN KEY (receiver_id)
+REFERENCES users(id)
+ON DELETE CASCADE
+
+);
+
+-- PROJETOS
+
+CREATE TABLE projects (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+user_id INT NOT NULL,
+
+title VARCHAR(255) NOT NULL,
+
+description TEXT NOT NULL,
+
+status ENUM(
+'open',
+'closed',
+'finished'
+) DEFAULT 'open',
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE
+
+);
+
+-- CANDIDATURAS
+
+CREATE TABLE project_applications (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+project_id INT NOT NULL,
+
+user_id INT NOT NULL,
+
+message TEXT,
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY (project_id)
+REFERENCES projects(id)
+ON DELETE CASCADE,
+
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE
+
+);
+
+-- NOTIFICAÇÕES
+
+CREATE TABLE notifications (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+user_id INT NOT NULL,
+
+title VARCHAR(255),
+
+message TEXT,
+
+is_read BOOLEAN DEFAULT FALSE,
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE
+
+);
+
+-- DENÚNCIAS
+
+CREATE TABLE reports (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+reporter_id INT NOT NULL,
+
+reported_user_id INT,
+
+post_id INT,
+
+reason TEXT,
+
+status ENUM(
+'pending',
+'reviewing',
+'resolved'
+) DEFAULT 'pending',
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY (reporter_id)
+REFERENCES users(id)
+ON DELETE CASCADE
+
+);
+
+-- IA DA INSPIRE
+
+CREATE TABLE ai_history (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+user_id INT NOT NULL,
+
+prompt TEXT,
+
+response LONGTEXT,
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE
+
+);
+
+-- CONFIGURAÇÕES
+
+CREATE TABLE settings (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+user_id INT NOT NULL,
+
+private_account BOOLEAN DEFAULT FALSE,
+
+dark_mode BOOLEAN DEFAULT FALSE,
+
+allow_messages BOOLEAN DEFAULT TRUE,
+
+show_online_status BOOLEAN DEFAULT TRUE,
+
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE
+
+);
