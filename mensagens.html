@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mensagens - Inspire</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+background:#fff8fc;
+overflow:hidden;
+}
+
+.chat-container{
+display:flex;
+height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:350px;
+background:white;
+border-right:1px solid #eee;
+display:flex;
+flex-direction:column;
+}
+
+.sidebar-header{
+padding:25px;
+font-size:24px;
+font-weight:700;
+color:#a855f7;
+}
+
+.search{
+padding:15px;
+margin:0 20px 20px;
+border:none;
+border-radius:15px;
+background:#f3f4f6;
+outline:none;
+}
+
+.contacts{
+overflow-y:auto;
+flex:1;
+}
+
+.contact{
+display:flex;
+align-items:center;
+gap:15px;
+padding:15px 20px;
+cursor:pointer;
+transition:.3s;
+}
+
+.contact:hover{
+background:#f8f0ff;
+}
+
+.contact img{
+width:55px;
+height:55px;
+border-radius:50%;
+}
+
+.online{
+width:12px;
+height:12px;
+background:#22c55e;
+border-radius:50%;
+margin-left:auto;
+}
+
+/* CHAT */
+
+.chat{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+.chat-header{
+background:white;
+padding:20px;
+display:flex;
+align-items:center;
+gap:15px;
+border-bottom:1px solid #eee;
+}
+
+.chat-header img{
+width:50px;
+height:50px;
+border-radius:50%;
+}
+
+.chat-messages{
+flex:1;
+padding:25px;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.message{
+max-width:70%;
+padding:15px;
+border-radius:20px;
+}
+
+.received{
+background:white;
+align-self:flex-start;
+}
+
+.sent{
+background:#a855f7;
+color:white;
+align-self:flex-end;
+}
+
+.chat-input{
+padding:20px;
+background:white;
+display:flex;
+gap:10px;
+}
+
+.chat-input input{
+flex:1;
+padding:15px;
+border:none;
+border-radius:15px;
+background:#f3f4f6;
+outline:none;
+}
+
+.send-btn{
+padding:15px 25px;
+border:none;
+border-radius:15px;
+background:#a855f7;
+color:white;
+cursor:pointer;
+font-weight:600;
+}
+
+@media(max-width:800px){
+
+.sidebar{
+width:100px;
+}
+
+.contact span{
+display:none;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="chat-container">
+
+<div class="sidebar">
+
+<div class="sidebar-header">
+Mensagens
+</div>
+
+<input
+class="search"
+placeholder="Pesquisar">
+
+<div class="contacts">
+
+<div class="contact">
+
+<img src="https://i.pravatar.cc/150?img=12">
+
+<span>Luna Arts</span>
+
+<div class="online"></div>
+
+</div>
+
+<div class="contact">
+
+<img src="https://i.pravatar.cc/150?img=25">
+
+<span>Anna Studios</span>
+
+<div class="online"></div>
+
+</div>
+
+<div class="contact">
+
+<img src="https://i.pravatar.cc/150?img=35">
+
+<span>Victor Hall</span>
+
+<div class="online"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="chat">
+
+<div class="chat-header">
+
+<img src="https://i.pravatar.cc/150?img=12">
+
+<div>
+
+<h3>Luna Arts</h3>
+
+<p>Online</p>
+
+</div>
+
+</div>
+
+<div
+class="chat-messages"
+id="messages">
+
+<div class="message received">
+
+Olá Marcos 👋
+
+</div>
+
+<div class="message sent">
+
+Oi Luna, tudo bem?
+
+</div>
+
+</div>
+
+<div class="chat-input">
+
+<input
+id="messageInput"
+placeholder="Digite uma mensagem">
+
+<button
+class="send-btn"
+onclick="sendMessage()">
+
+Enviar
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function sendMessage(){
+
+const input =
+document.getElementById(
+"messageInput"
+);
+
+const text =
+input.value.trim();
+
+if(text===""){
+return;
+}
+
+const messages =
+document.getElementById(
+"messages"
+);
+
+const div =
+document.createElement("div");
+
+div.className =
+"message sent";
+
+div.innerText = text;
+
+messages.appendChild(div);
+
+messages.scrollTop =
+messages.scrollHeight;
+
+input.value="";
+
+}
+
+/* Enter */
+
+document
+.getElementById("messageInput")
+.addEventListener(
+"keypress",
+function(e){
+
+if(e.key==="Enter"){
+
+sendMessage();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
