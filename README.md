@@ -1,16 +1,8 @@
-Sim. Pelo PDF, o professor ensina apenas:
-Listas (vetores e matrizes)
-for
-if
-range()
-len()
-Variáveis simples
-Percorrer matrizes com laços aninhados
-Ele não mostrou sum(), max(), enumerate() ou outras funções mais avançadas. �
-Aula_Vetores_Matrizes_Python.pdf
-Então eu faria as respostas assim:
-1) Mostrar qual aluno teve a maior média
-Python
+# Atividade Prática - Matrizes em Python
+
+## 1. Mostrar qual aluno teve a maior média
+
+```python
 notas = [
     [8, 7, 9, 6],
     [5, 10, 8, 7],
@@ -34,8 +26,13 @@ for i in range(len(notas)):
 
 print("Aluno com maior média:", aluno_maior)
 print("Média:", maior_media)
-2) Contar quantas notas foram maiores ou iguais a 7
-Python
+```
+
+---
+
+## 2. Contar quantas notas foram maiores ou iguais a 7
+
+```python
 notas = [
     [8, 7, 9, 6],
     [5, 10, 8, 7],
@@ -50,8 +47,13 @@ for linha in notas:
             contador += 1
 
 print("Quantidade:", contador)
-3) Exibir apenas as notas da segunda disciplina
-Python
+```
+
+---
+
+## 3. Exibir apenas as notas da segunda disciplina
+
+```python
 notas = [
     [8, 7, 9, 6],
     [5, 10, 8, 7],
@@ -60,10 +62,21 @@ notas = [
 
 for linha in notas:
     print(linha[1])
-O acesso usando dois índices (matriz[linha][coluna]) é exatamente o que o PDF ensina. �
-Aula_Vetores_Matrizes_Python.pdf
-4) Calcular a média de cada disciplina (por coluna)
-Python
+```
+
+### Saída
+
+```text
+7
+10
+8
+```
+
+---
+
+## 4. Calcular a média de cada disciplina (por coluna)
+
+```python
 notas = [
     [8, 7, 9, 6],
     [5, 10, 8, 7],
@@ -80,5 +93,20 @@ for coluna in range(4):
 
     print("Disciplina", coluna + 1)
     print("Média =", media)
-Essas soluções seguem o estilo mostrado na apostila, usando matrizes, laços for, índices e variáveis acumuladoras. �
-Aula_Vetores_Matrizes_Python.pdf
+```
+
+### Saída
+
+```text
+Disciplina 1
+Média = 7.333333333333333
+
+Disciplina 2
+Média = 8.333333333333334
+
+Disciplina 3
+Média = 8.0
+
+Disciplina 4
+Média = 7.666666666666667
+```
