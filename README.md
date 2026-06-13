@@ -1,16 +1,27 @@
-# Atividade Prática - Matrizes em Python
-
-## 1. Mostrar qual aluno teve a maior média
-
 ```python
-notas = [
-    [8, 7, 9, 6],
-    [5, 10, 8, 7],
-    [9, 8, 7, 10]
-]
+notas = []
 
-maior_media = 0
-aluno_maior = 0
+print("=== CONTROLE DE NOTAS ===")
+
+for aluno in range(3):
+    print(f"\nAluno {aluno + 1}")
+
+    linha = []
+
+    for disciplina in range(4):
+        nota = float(input(f"Digite a nota da disciplina {disciplina + 1}: "))
+        linha.append(nota)
+
+    notas.append(linha)
+
+print("\n=== TABELA DE NOTAS ===")
+
+for i in range(len(notas)):
+    print(f"Aluno {i + 1}: {notas[i]}")
+
+print("\n=== MÉDIA DE CADA ALUNO ===")
+
+medias = []
 
 for i in range(len(notas)):
     soma = 0
@@ -19,25 +30,29 @@ for i in range(len(notas)):
         soma += nota
 
     media = soma / len(notas[i])
+    medias.append(media)
 
-    if media > maior_media:
-        maior_media = media
-        aluno_maior = i + 1
+    print(f"Aluno {i + 1}: Média = {media:.2f}")
 
-print("Aluno com maior média:", aluno_maior)
-print("Média:", maior_media)
-```
+maior_nota = notas[0][0]
 
----
+for linha in notas:
+    for nota in linha:
+        if nota > maior_nota:
+            maior_nota = nota
 
-## 2. Contar quantas notas foram maiores ou iguais a 7
+print(f"\nMaior nota da turma: {maior_nota}")
 
-```python
-notas = [
-    [8, 7, 9, 6],
-    [5, 10, 8, 7],
-    [9, 8, 7, 10]
-]
+maior_media = medias[0]
+aluno_maior_media = 1
+
+for i in range(len(medias)):
+    if medias[i] > maior_media:
+        maior_media = medias[i]
+        aluno_maior_media = i + 1
+
+print(f"\nAluno com a maior média: Aluno {aluno_maior_media}")
+print(f"Média: {maior_media:.2f}")
 
 contador = 0
 
@@ -46,67 +61,22 @@ for linha in notas:
         if nota >= 7:
             contador += 1
 
-print("Quantidade:", contador)
-```
+print(f"\nQuantidade de notas maiores ou iguais a 7: {contador}")
 
----
+print("\nNotas da segunda disciplina:")
 
-## 3. Exibir apenas as notas da segunda disciplina
+for i in range(len(notas)):
+    print(f"Aluno {i + 1}: {notas[i][1]}")
 
-```python
-notas = [
-    [8, 7, 9, 6],
-    [5, 10, 8, 7],
-    [9, 8, 7, 10]
-]
+print("\nMédia de cada disciplina:")
 
-for linha in notas:
-    print(linha[1])
-```
-
-### Saída
-
-```text
-7
-10
-8
-```
-
----
-
-## 4. Calcular a média de cada disciplina (por coluna)
-
-```python
-notas = [
-    [8, 7, 9, 6],
-    [5, 10, 8, 7],
-    [9, 8, 7, 10]
-]
-
-for coluna in range(4):
+for disciplina in range(4):
     soma = 0
 
-    for linha in range(3):
-        soma += notas[linha][coluna]
+    for aluno in range(3):
+        soma += notas[aluno][disciplina]
 
     media = soma / 3
 
-    print("Disciplina", coluna + 1)
-    print("Média =", media)
-```
-
-### Saída
-
-```text
-Disciplina 1
-Média = 7.333333333333333
-
-Disciplina 2
-Média = 8.333333333333334
-
-Disciplina 3
-Média = 8.0
-
-Disciplina 4
-Média = 7.666666666666667
+    print(f"Disciplina {disciplina + 1}: {media:.2f}")
 ```
