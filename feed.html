@@ -442,7 +442,138 @@ document
 ).value="";
 
 }
+function toggleLike(btn){
 
+btn.classList.toggle(
+"liked"
+);
+
+const span =
+btn.querySelector(
+"span"
+);
+
+let likes =
+parseInt(
+span.innerText
+);
+
+if(
+btn.classList.contains(
+"liked"
+)
+){
+
+likes++;
+
+}else{
+
+likes--;
+
+}
+
+span.innerText = likes;
+
+}
+
+function openComments(btn){
+
+const area =
+btn.parentElement
+.nextElementSibling;
+
+if(
+area.style.display==="block"
+){
+
+area.style.display="none";
+
+}else{
+
+area.style.display="block";
+
+}
+
+}
+
+function sendComment(btn){
+
+const area =
+btn.parentElement;
+
+const input =
+area.querySelector(
+".comment-input"
+);
+
+if(
+input.value===""
+){
+
+return;
+
+}
+
+const list =
+area.querySelector(
+".comments-list"
+);
+
+const comment =
+document.createElement(
+"div"
+);
+
+comment.className=
+"comment";
+
+comment.innerText=
+"Você: " +
+input.value;
+
+list.appendChild(
+comment
+);
+
+input.value="";
+
+}
+
+function savePost(btn){
+
+btn.classList.toggle(
+"saved"
+);
+
+if(
+btn.classList.contains(
+"saved"
+)
+){
+
+btn.innerText=
+"✅ Salvo";
+
+}else{
+
+btn.innerText=
+"🔖 Salvar";
+
+}
+
+}
+
+function sharePost(){
+
+navigator.clipboard.writeText(
+window.location.href
+);
+
+alert(
+"Link copiado!"
+);
+
+}
 </script>
 
 </body>
