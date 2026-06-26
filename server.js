@@ -650,3 +650,616 @@ console.log(
 
 );
 fetch("http://localhost:3000/api/posts")
+// =============================
+// INSPIRE AI - SERVER.JS
+// =============================
+
+require("dotenv").config();
+
+const express = require("express");
+const mysql = require("mysql2");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const cors = require("cors");
+const path = require("path");
+
+const app = express();
+
+// =============================
+// CONFIG
+// =============================
+
+app.use(cors());
+
+app.use(express.json());
+
+app.use(express.urlencoded({ extended:true }));
+
+app.use(express.static("public"));
+
+const db = mysql.createPool({
+
+host:process.env.DB_HOST,
+
+user:process.env.DB_USER,
+
+password:process.env.DB_PASSWORD,
+
+database:process.env.DB_NAME,
+
+connectionLimit:10
+
+});
+
+// =============================
+// JWT
+// =============================
+
+const SECRET =
+process.env.JWT_SECRET || "INSPIRE_SECRET";
+
+// =============================
+// MIDDLEWARE
+// =============================
+
+function auth(req,res,next){
+
+const token=req.headers.authorization;
+
+if(!token){
+
+return res.status(401).json({
+
+message:"Não autorizado"
+
+});
+
+}
+
+try{
+
+const decoded=jwt.verify(token,SECRET);
+
+req.user=decoded;
+
+next();
+
+}catch{
+
+return res.status(401).json({
+
+message:"Token inválido"
+
+});
+
+}
+
+}
+
+// =============================
+// CADASTRO
+// =============================
+
+app.post("/api/register",(req,res)=>{
+
+const{
+
+name,
+
+email,
+
+password
+
+}=req.body;
+
+bcrypt.hash(password,10,(err,hash)=>{
+
+if(err){
+
+return res.status(500).json(err);
+
+}
+
+db.query(
+
+`INSERT INTO users
+(name,email,password)
+VALUES(?,?,?)`,
+
+[
+
+name,
+
+email,
+
+hash
+
+],
+
+(err)=>{
+
+if(err){
+
+return res.status(500).json(err);
+
+}
+
+res.json({
+
+message:"Conta criada."
+
+});
+
+}
+
+);
+
+});
+
+});
+
+// =============================
+// LOGIN
+// =============================
+
+app.post("/api/login",(req,res)=>{
+
+const{
+
+email,
+
+password
+
+}=req.body;
+
+db.query(
+
+"SELECT * FROM users WHERE email=?",
+
+[email],
+
+(err,result)=>{
+
+if(err){
+
+return res.status(500).json(err);
+
+}
+
+if(result.length===0){
+
+return res.status(401).json({
+
+message:"Usuário não encontrado."
+
+});
+
+}
+
+const user=result[0];
+
+bcrypt.compare(
+
+password,
+
+user.password,
+
+(err,same)=>{
+
+if(!same){
+
+return res.status(401).json({
+
+message:"Senha incorreta."
+
+});
+
+}
+
+const token=jwt.sign({
+
+id:user.id,
+
+name:user.name
+
+},
+
+SECRET,
+
+{
+
+expiresIn:"7d"
+
+}
+
+);
+
+res.json({
+
+token,
+
+user
+
+});
+
+});
+
+});
+
+});
+
+// =============================
+// NOVA CONVERSA
+// =============================
+
+app.post(
+
+"/api/chat",
+
+auth,
+
+(req,res)=>{
+
+const{
+
+title
+
+}=req.body;
+
+db.query(
+
+`
+
+INSERT INTO ai_chats
+
+(user_id,title)
+
+VALUES(?,?)
+
+`,
+
+[
+
+req.user.id,
+
+title
+
+],
+
+(err,result)=>{
+
+if(err){
+
+return res.status(500).json(err);
+
+}
+
+res.json({
+
+chatId:result.insertId
+
+});
+
+}
+
+);
+
+});
+
+// =============================
+// SALVAR MENSAGEM
+// =============================
+
+app.post(
+
+"/api/message",
+
+auth,
+
+(req,res)=>{
+
+const{
+
+chatId,
+
+role,
+
+message
+
+}=req.body;
+
+db.query(
+
+`
+
+INSERT INTO ai_messages
+
+(chat_id,role,message)
+
+VALUES(?,?,?)
+
+`,
+
+[
+
+chatId,
+
+role,
+
+message
+
+],
+
+(err)=>{
+
+if(err){
+
+return res.status(500).json(err);
+
+}
+
+res.json({
+
+message:"Salvo."
+
+});
+
+}
+
+);
+
+});
+
+// =============================
+// LISTAR CHATS
+// =============================
+
+app.get(
+
+"/api/chats",
+
+auth,
+
+(req,res)=>{
+
+db.query(
+
+`
+
+SELECT *
+
+FROM ai_chats
+
+WHERE user_id=?
+
+ORDER BY id DESC
+
+`,
+
+[
+
+req.user.id
+
+],
+
+(err,result)=>{
+
+if(err){
+
+return res.status(500).json(err);
+
+}
+
+res.json(result);
+
+}
+
+);
+
+});
+
+// =============================
+// LISTAR MENSAGENS
+// =============================
+
+app.get(
+
+"/api/messages/:id",
+
+auth,
+
+(req,res)=>{
+
+db.query(
+
+`
+
+SELECT *
+
+FROM ai_messages
+
+WHERE chat_id=?
+
+ORDER BY id ASC
+
+`,
+
+[
+
+req.params.id
+
+],
+
+(err,result)=>{
+
+if(err){
+
+return res.status(500).json(err);
+
+}
+
+res.json(result);
+
+}
+
+);
+
+});
+
+// =============================
+// APAGAR CHAT
+// =============================
+
+app.delete(
+
+"/api/chat/:id",
+
+auth,
+
+(req,res)=>{
+
+db.query(
+
+"DELETE FROM ai_messages WHERE chat_id=?",
+
+[
+
+req.params.id
+
+],
+
+()=>{
+
+db.query(
+
+"DELETE FROM ai_chats WHERE id=?",
+
+[
+
+req.params.id
+
+],
+
+()=>{
+
+res.json({
+
+message:"Conversa apagada."
+
+});
+
+}
+
+);
+
+});
+
+});
+
+// =============================
+// IA V1
+// =============================
+
+app.post(
+
+"/api/ask",
+
+auth,
+
+(req,res)=>{
+
+const{
+
+question
+
+}=req.body;
+
+let answer="";
+
+const q=question.toLowerCase();
+
+if(q.includes("html")){
+
+answer="HTML estrutura uma página.";
+
+}
+
+else if(q.includes("css")){
+
+answer="CSS estiliza páginas.";
+
+}
+
+else if(q.includes("javascript")){
+
+answer="JavaScript adiciona interatividade.";
+
+}
+
+else if(q.includes("filme")){
+
+answer="Sugestão: um filme sobre memórias vendidas.";
+
+}
+
+else if(q.includes("música")){
+
+answer="Sugestão: escreva sobre esperança.";
+
+}
+
+else{
+
+answer="Ainda estou aprendendo. 😊";
+
+}
+
+res.json({
+
+answer
+
+});
+
+});
+
+// =============================
+// FRONTEND
+// =============================
+
+app.get("*",(req,res)=>{
+
+res.sendFile(
+
+path.join(
+
+__dirname,
+
+"public",
+
+"index.html"
+
+)
+
+);
+
+});
+
+// =============================
+// START
+// =============================
+
+const PORT=
+
+process.env.PORT || 3000;
+
+app.listen(PORT,()=>{
+
+console.log(
+
+"Servidor iniciado na porta",
+
+PORT
+
+);
+
+});
