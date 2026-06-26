@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Inspire • Artistas</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#fff6ff,
+#f2eeff,
+#edf7ff);
+
+height:100vh;
+
+overflow:hidden;
+
+}
+
+/* Fundo */
+
+.blur1{
+
+position:fixed;
+
+width:700px;
+height:700px;
+
+background:#9b5cff;
+
+filter:blur(170px);
+
+opacity:.18;
+
+top:-250px;
+left:-250px;
+
+border-radius:50%;
+
+}
+
+.blur2{
+
+position:fixed;
+
+width:650px;
+height:650px;
+
+background:#60a5fa;
+
+filter:blur(170px);
+
+opacity:.18;
+
+bottom:-250px;
+right:-200px;
+
+border-radius:50%;
+
+}
+
+/* Layout */
+
+.container{
+
+display:flex;
+
+height:100vh;
+
+position:relative;
+
+z-index:2;
+
+}
+
+/* Sidebar */
+
+.sidebar{
+
+width:260px;
+
+background:rgba(255,255,255,.55);
+
+backdrop-filter:blur(25px);
+
+border-right:1px solid rgba(255,255,255,.4);
+
+padding:30px;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.logo{
+
+font-size:30px;
+
+font-weight:700;
+
+color:#7c3aed;
+
+margin-bottom:40px;
+
+}
+
+.menu{
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.menu a{
+
+text-decoration:none;
+
+padding:15px;
+
+border-radius:18px;
+
+color:#444;
+
+transition:.3s;
+
+}
+
+.menu a:hover{
+
+background:white;
+
+transform:translateX(5px);
+
+}
+
+.menu i{
+
+width:25px;
+
+color:#7c3aed;
+
+}
+
+/* Conteúdo */
+
+.content{
+
+flex:1;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+/* Header */
+
+.header{
+
+height:80px;
+
+background:rgba(255,255,255,.55);
+
+backdrop-filter:blur(20px);
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 35px;
+
+}
+
+.header h1{
+
+color:#7c3aed;
+
+font-size:28px;
+
+}
+
+.search{
+
+width:350px;
+
+padding:13px;
+
+border:none;
+
+border-radius:18px;
+
+outline:none;
+
+}
+
+/* Grid */
+
+.grid{
+
+padding:35px;
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fill,minmax(260px,1fr));
+
+gap:25px;
+
+overflow:auto;
+
+}
+
+/* Card */
+
+.card{
+
+background:white;
+
+border-radius:25px;
+
+padding:20px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.cover{
+
+height:120px;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+45deg,
+#8b5cf6,
+#60a5fa);
+
+margin-bottom:15px;
+
+}
+
+.avatar{
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+margin-top:-45px;
+
+border:5px solid white;
+
+object-fit:cover;
+
+}
+
+.name{
+
+font-size:22px;
+
+font-weight:700;
+
+margin-top:10px;
+
+}
+
+.job{
+
+color:#7c3aed;
+
+margin-bottom:15px;
+
+}
+
+.stats{
+
+display:flex;
+
+justify-content:space-between;
+
+margin:15px 0;
+
+font-size:14px;
+
+}
+
+.follow{
+
+width:100%;
+
+padding:13px;
+
+border:none;
+
+border-radius:18px;
+
+background:#7c3aed;
+
+color:white;
+
+cursor:pointer;
+
+font-size:15px;
+
+transition:.3s;
+
+}
+
+.follow:hover{
+
+transform:scale(1.03);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="blur1"></div>
+
+<div class="blur2"></div>
+
+<div class="container">
+
+<div class="sidebar">
+
+<div class="logo">
+
+INSPIRE
+
+</div>
+
+<div class="menu">
+
+<a href="#"><i class="fa-solid fa-house"></i> Feed</a>
+
+<a href="#"><i class="fa-solid fa-user"></i> Perfil</a>
+
+<a href="#"><i class="fa-solid fa-palette"></i> Artistas</a>
+
+<a href="#"><i class="fa-solid fa-comments"></i> Mensagens</a>
+
+<a href="#"><i class="fa-solid fa-robot"></i> Inspire AI</a>
+
+<a href="#"><i class="fa-solid fa-gear"></i> Configurações</a>
+
+</div>
+
+</div>
+
+<div class="content">
+
+<div class="header">
+
+<h1>
+
+Artistas
+
+</h1>
+
+<input
+
+id="search"
+
+class="search"
+
+placeholder="Pesquisar artista...">
+
+</div>
+
+<div class="grid" id="artists">
