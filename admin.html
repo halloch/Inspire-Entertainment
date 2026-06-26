@@ -654,3 +654,402 @@ Excluir
 </td>
 
 </tr>
+<tr>
+
+<td>3</td>
+
+<td>Pedro</td>
+
+<td>
+
+<span class="status online">
+
+Online
+
+</span>
+
+</td>
+
+<td>
+
+<button class="action edit">
+
+Editar
+
+</button>
+
+<button class="action delete">
+
+Excluir
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>4</td>
+
+<td>Julia</td>
+
+<td>
+
+<span class="status offline">
+
+Offline
+
+</span>
+
+</td>
+
+<td>
+
+<button class="action edit">
+
+Editar
+
+</button>
+
+<button class="action delete">
+
+Excluir
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>5</td>
+
+<td>Gabriel</td>
+
+<td>
+
+<span class="status online">
+
+Online
+
+</span>
+
+</td>
+
+<td>
+
+<button class="action edit">
+
+Editar
+
+</button>
+
+<button class="action delete">
+
+Excluir
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- ========================= -->
+<!-- PUBLICAÇÕES -->
+<!-- ========================= -->
+
+<div id="postsSection" style="display:none; margin-top:35px;">
+
+<h2 style="margin-bottom:20px;color:#6d28d9;">
+
+Publicações Recentes
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>🌅 Foto do pôr do sol</h3>
+
+<p>Autor: Marcos</p>
+
+<p>❤️ 254 Curtidas</p>
+
+<p>💬 89 Comentários</p>
+
+<button class="action edit">
+
+Ver Publicação
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>🎵 Música Original</h3>
+
+<p>Autor: Ana</p>
+
+<p>❤️ 842 Curtidas</p>
+
+<p>💬 120 Comentários</p>
+
+<button class="action edit">
+
+Ver Publicação
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>🎨 Arte Digital</h3>
+
+<p>Autor: Pedro</p>
+
+<p>❤️ 965 Curtidas</p>
+
+<p>💬 305 Comentários</p>
+
+<button class="action edit">
+
+Ver Publicação
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- IA -->
+<!-- ========================= -->
+
+<div id="aiSection" style="display:none;margin-top:40px;">
+
+<h2 style="color:#6d28d9;">
+
+Inspire AI
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h2>
+
+1532
+
+</h2>
+
+<p>
+
+Conversas Hoje
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+98%
+
+</h2>
+
+<p>
+
+Taxa de Resposta
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+4.9★
+
+</h2>
+
+<p>
+
+Avaliação
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- DENÚNCIAS -->
+<!-- ========================= -->
+
+<div id="reportsSection" style="display:none;margin-top:35px;">
+
+<h2 style="color:#6d28d9;">
+
+Denúncias
+
+</h2>
+
+<div class="table">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Usuário</th>
+
+<th>Motivo</th>
+
+<th>Status</th>
+
+<th>Ação</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Pedro</td>
+
+<td>Spam</td>
+
+<td>Pendente</td>
+
+<td>
+
+<button class="action edit">
+
+Analisar
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Ana</td>
+
+<td>Conteúdo impróprio</td>
+
+<td>Pendente</td>
+
+<td>
+
+<button class="action edit">
+
+Analisar
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function openSection(sec){
+
+document.getElementById("postsSection").style.display="none";
+
+document.getElementById("aiSection").style.display="none";
+
+document.getElementById("reportsSection").style.display="none";
+
+if(sec==="posts"){
+
+document.getElementById("postsSection").style.display="block";
+
+}
+
+if(sec==="ia"){
+
+document.getElementById("aiSection").style.display="block";
+
+}
+
+if(sec==="denuncias"){
+
+document.getElementById("reportsSection").style.display="block";
+
+}
+
+}
+
+const users=document.getElementById("usersCount");
+
+const posts=document.getElementById("postsCount");
+
+const reports=document.getElementById("reportsCount");
+
+const messages=document.getElementById("messagesCount");
+
+setInterval(()=>{
+
+users.innerHTML=523+Math.floor(Math.random()*4);
+
+posts.innerHTML=1842+Math.floor(Math.random()*10);
+
+messages.innerHTML=8421+Math.floor(Math.random()*20);
+
+},3000);
+
+document.querySelectorAll(".delete").forEach(btn=>{
+
+btn.onclick=()=>{
+
+if(confirm("Deseja excluir este item?")){
+
+btn.closest("tr")?.remove();
+
+}
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>
