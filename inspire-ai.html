@@ -1089,6 +1089,380 @@ sendMessage();
 }
 
 );
+/* ==========================
+   INSPIRE AI V1 - PARTE 3
+========================== */
+
+const knowledge = {
+
+html: `
+<h2>HTML</h2>
+
+<p>HTML é a linguagem responsável por estruturar páginas da web.</p>
+
+<pre><code>&lt;h1&gt;Olá Mundo&lt;/h1&gt;</code></pre>
+`,
+
+css: `
+<h2>CSS</h2>
+
+<p>CSS estiliza toda a aparência do site.</p>
+
+<pre><code>
+body{
+    background:#f5f5f5;
+}
+</code></pre>
+`,
+
+javascript: `
+<h2>JavaScript</h2>
+
+<p>JavaScript deixa o site interativo.</p>
+
+<pre><code>
+document.querySelector("button")
+.addEventListener("click",()=>{
+    alert("Olá");
+});
+</code></pre>
+`,
+
+node:`
+<h2>Node.js</h2>
+
+<p>Node.js permite executar JavaScript no servidor.</p>
+`,
+
+mysql:`
+<h2>MySQL</h2>
+
+<p>MySQL é o banco de dados utilizado pela Inspire.</p>
+`,
+
+api:`
+<h2>APIs</h2>
+
+<p>Uma API conecta seu sistema com outro sistema.</p>
+`
+
+};
+
+function randomIdea(){
+
+const ideas=[
+
+"Crie uma rede social para artistas iniciantes.",
+
+"Faça um filme onde as cores desaparecem do mundo.",
+
+"Desenvolva um jogo onde a música muda a gravidade.",
+
+"Escreva uma história sobre uma biblioteca infinita.",
+
+"Crie um personagem que transforma emoções em poderes.",
+
+"Imagine uma cidade construída sobre nuvens."
+
+];
+
+return ideas[Math.floor(Math.random()*ideas.length)];
+
+}
+
+function motivational(){
+
+const frases=[
+
+"Continue criando. Grandes ideias começam pequenas.",
+
+"Cada linha de código aproxima você do seu objetivo.",
+
+"Sua criatividade é seu maior diferencial.",
+
+"Nunca pare de aprender.",
+
+"A Inspire nasceu para inspirar."
+
+];
+
+return frases[Math.floor(Math.random()*frases.length)];
+
+}
+
+function typeWriter(html){
+
+const bot=document.createElement("div");
+
+bot.className="bot";
+
+bot.innerHTML=`
+
+<img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
+
+<div class="bot-message" id="typingMessage"></div>
+
+`;
+
+messages.appendChild(bot);
+
+const target=document.getElementById("typingMessage");
+
+let i=0;
+
+const speed=8;
+
+const text=html;
+
+const interval=setInterval(()=>{
+
+target.innerHTML=text.substring(0,i);
+
+messages.scrollTop=messages.scrollHeight;
+
+i++;
+
+if(i>text.length){
+
+clearInterval(interval);
+
+highlightCode();
+
+}
+
+},speed);
+
+}
+
+function highlightCode(){
+
+document.querySelectorAll("pre").forEach(pre=>{
+
+pre.style.background="#1f2937";
+
+pre.style.color="#fff";
+
+pre.style.padding="15px";
+
+pre.style.borderRadius="15px";
+
+pre.style.overflow="auto";
+
+if(pre.querySelector("button")) return;
+
+const btn=document.createElement("button");
+
+btn.innerHTML="Copiar";
+
+btn.style.marginBottom="10px";
+
+btn.style.padding="8px 15px";
+
+btn.style.border="none";
+
+btn.style.background="#8b5cf6";
+
+btn.style.color="white";
+
+btn.style.borderRadius="10px";
+
+btn.style.cursor="pointer";
+
+btn.onclick=()=>{
+
+navigator.clipboard.writeText(pre.innerText);
+
+btn.innerHTML="Copiado!";
+
+setTimeout(()=>{
+
+btn.innerHTML="Copiar";
+
+},1500);
+
+};
+
+pre.prepend(btn);
+
+});
+
+}
+
+function generateAnswer(question){
+
+const q=question.toLowerCase();
+
+if(q.includes("html")) return knowledge.html;
+
+if(q.includes("css")) return knowledge.css;
+
+if(q.includes("javascript")) return knowledge.javascript;
+
+if(q.includes("node")) return knowledge.node;
+
+if(q.includes("mysql")) return knowledge.mysql;
+
+if(q.includes("api")) return knowledge.api;
+
+if(q.includes("ideia")){
+
+return `
+
+<h2>💡 Ideia Criativa</h2>
+
+<p>${randomIdea()}</p>
+
+`;
+
+}
+
+if(q.includes("motivação")||
+
+q.includes("motivacional")){
+
+return`
+
+<h2>✨ Motivação</h2>
+
+<p>${motivational()}</p>
+
+`;
+
+}
+
+if(q.includes("filme")){
+
+return`
+
+<h2>🎬 Filme</h2>
+
+<p>
+
+Título:
+
+<b>Fragmentos da Memória</b>
+
+</p>
+
+<p>
+
+Em um futuro próximo,
+
+lembranças podem ser vendidas.
+
+Um jovem descobre uma memória que nunca viveu.
+
+</p>
+
+`;
+
+}
+
+if(q.includes("personagem")){
+
+return`
+
+<h2>🎨 Personagem</h2>
+
+<b>Nome:</b>
+
+Aurora.
+
+<br><br>
+
+Ilustradora capaz de desenhar criaturas que ganham vida.
+
+`;
+
+}
+
+if(q.includes("música")){
+
+return`
+
+<h2>🎵 Música</h2>
+
+<p>
+
+Mesmo quando o céu cair,
+
+Vou sorrir,
+
+Vou seguir,
+
+Pois criar
+
+É minha forma de existir.
+
+</p>
+
+`;
+
+}
+
+if(q.includes("poema")){
+
+return`
+
+<h2>📖 Poema</h2>
+
+<p>
+
+A arte nasce em silêncio,
+
+Floresce em emoção,
+
+E encontra seu caminho
+
+Dentro do coração.
+
+</p>
+
+`;
+
+}
+
+return`
+
+<h2>Inspire AI</h2>
+
+<p>
+
+Posso ajudar com:
+
+</p>
+
+<ul>
+
+<li>💻 Programação</li>
+
+<li>🎨 Artes</li>
+
+<li>🎬 Filmes</li>
+
+<li>🎵 Música</li>
+
+<li>📖 Histórias</li>
+
+<li>📚 Estudos</li>
+
+<li>💡 Ideias</li>
+
+<li>✨ Motivação</li>
+
+</ul>
+
+`;
+
+}
+
+/* substitua no sendMessage():
+addBot(generateAnswer(text));
+por:
+
+typeWriter(generateAnswer(text));
+
+*/
 
 </script>
 
