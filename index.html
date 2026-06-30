@@ -1,3 +1,4 @@
+
 !DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -602,6 +603,295 @@
 
                 color: #666;
             }
+/* ===========================
+   MOBILE
+=========================== */
+
+@media screen and (max-width:768px){
+
+.navbar{
+
+    padding:15px;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.logo{
+
+    font-size:28px;
+
+}
+
+.nav-links{
+
+    display:flex !important;
+
+    width:100%;
+
+    overflow-x:auto;
+
+    gap:15px;
+
+    justify-content:flex-start;
+
+    padding-bottom:5px;
+
+    scrollbar-width:none;
+
+}
+
+.nav-links::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+.nav-links a{
+
+    white-space:nowrap;
+
+    font-size:15px;
+
+}
+
+.btn{
+
+    padding:10px 18px;
+
+    font-size:14px;
+
+}
+
+.hero{
+
+    padding:130px 20px 60px;
+
+    min-height:auto;
+
+}
+
+.hero-banner{
+
+    width:100%;
+
+    margin:0 auto 25px;
+
+}
+
+.hero h1{
+
+    font-size:38px;
+
+    line-height:1.2;
+
+}
+
+.hero p{
+
+    font-size:17px;
+
+    margin-bottom:30px;
+
+}
+
+.hero-buttons{
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.big-btn{
+
+    width:100%;
+
+    font-size:17px;
+
+}
+
+.scroll-down{
+
+    display:none;
+
+}
+
+.section{
+
+    padding:70px 20px;
+
+}
+
+.section-title{
+
+    font-size:34px;
+
+}
+
+.section-sub{
+
+    font-size:16px;
+
+}
+
+.artists-grid,
+
+.projects-grid{
+
+    grid-template-columns:1fr;
+
+    gap:20px;
+
+}
+
+.artist-card,
+
+.project-card{
+
+    padding:25px;
+
+    border-radius:22px;
+
+}
+
+.artist-card img{
+
+    width:100px;
+
+    height:100px;
+
+}
+
+.ai-showcase{
+
+    padding:25px;
+
+}
+
+.ai-buttons{
+
+    flex-direction:column;
+
+}
+
+.ai-buttons button{
+
+    width:100%;
+
+}
+
+.stats{
+
+    gap:30px;
+
+    padding:70px 20px;
+
+}
+
+.stats div{
+
+    width:45%;
+
+    text-align:center;
+
+}
+
+.stats h2{
+
+    font-size:34px;
+
+}
+
+.footer-links{
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+}
+
+/* ===========================
+CELULARES PEQUENOS
+=========================== */
+
+@media screen and (max-width:480px){
+
+.logo{
+
+    font-size:24px;
+
+}
+
+.hero{
+
+    padding-top:120px;
+
+}
+
+.hero h1{
+
+    font-size:30px;
+
+}
+
+.hero p{
+
+    font-size:15px;
+
+}
+
+.big-btn{
+
+    font-size:15px;
+
+    padding:14px;
+
+}
+
+.section-title{
+
+    font-size:28px;
+
+}
+
+.artist-card,
+
+.project-card{
+
+    padding:20px;
+
+}
+
+.stats{
+
+    flex-direction:column;
+
+}
+
+.stats div{
+
+    width:100%;
+
+}
+
+.stats h2{
+
+    font-size:32px;
+
+}
+
+footer{
+
+    padding:50px 20px;
+
+}
+
+}
         </style>
     </head>
 
@@ -629,17 +919,10 @@
                 <a href="inspire-ai.html">Inspire AI</a>
 
                 <button
-                    class="btn btn-login"
+                    class="btn btn-register"
                     onclick="location.href = 'login.html'"
                 >
                     Entrar
-                </button>
-
-                <button
-                    class="btn btn-register"
-                    onclick="location.href = 'cadastro.html'"
-                >
-                    Cadastrar
                 </button>
             </div>
         </nav>
@@ -670,7 +953,7 @@
                 <div class="hero-buttons">
                     <button
                         class="big-btn start"
-                        onclick="location.href = 'cadastro.html'"
+                        onclick="location.href = 'login.html'"
                     >
                         Começar Agora
                     </button>
@@ -762,7 +1045,13 @@
                         🎵 Compositor
                     </p>
 
-                    <button>Candidatar-se</button>
+                    <button
+                    class="apply-btn"
+                    onclick="location.href = 'candidato.html'">
+
+                    Candidatar-se
+
+                   </button>
                 </div>
 
                 <div class="project-card">
@@ -784,7 +1073,13 @@
                         🎵 Sound Designer
                     </p>
 
-                    <button>Candidatar-se</button>
+                    <button
+                   class="apply-btn"
+                  onclick="location.href = 'candidato.html'">
+
+                  Candidatar-se
+
+                </button>
                 </div>
 
                 <div class="project-card">
@@ -806,7 +1101,13 @@
                         🎨 Assistente de Arte
                     </p>
 
-                    <button>Candidatar-se</button>
+                    <button
+                     class="apply-btn"
+                     onclick="location.href = 'candidato.html'">
+
+                     Candidatar-se
+
+                     </button>
                 </div>
             </div>
         </section>
@@ -822,13 +1123,33 @@
                 </h3>
 
                 <div class="ai-buttons">
-                    <button>Gerar Roteiro</button>
+                    <button
+                    class="btn btn-register"
+                    onclick="location.href = 'inspire-ai.html'"
+                >
+                    Gerar roteiros
+                </button>
 
-                    <button>Criar Música</button>
+                  <button
+                    class="btn btn-register"
+                    onclick="location.href = 'inspire-ai.html'"
+                >
+                    Criar musica
+                </button>
 
-                    <button>Ideias de Projeto</button>
+                    <button
+                    class="btn btn-register"
+                    onclick="location.href = 'inspire-ai.html'"
+                >
+                    Ideias de projeto
+                </button>
 
-                    <button>Criar Personagem</button>
+                    <button
+                    class="btn btn-register"
+                    onclick="location.href = 'inspire-ai.html'"
+                >
+                    Criar personagem
+                </button>
                 </div>
             </div>
         </section>
