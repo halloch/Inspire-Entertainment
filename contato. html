@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contato • Inspire Entertainment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#eef5ff,#f8f5ff);
+color:#333;
+}
+
+header{
+
+height:300px;
+
+background:linear-gradient(45deg,#6d28d9,#2563eb);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+color:white;
+
+text-align:center;
+
+padding:20px;
+
+}
+
+header h1{
+
+font-size:52px;
+
+}
+
+header p{
+
+margin-top:15px;
+
+font-size:18px;
+
+opacity:.9;
+
+}
+
+.container{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:40px 20px;
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:30px;
+
+}
+
+.card{
+
+background:white;
+
+padding:35px;
+
+border-radius:25px;
+
+box-shadow:0 20px 60px rgba(0,0,0,.08);
+
+}
+
+h2{
+
+color:#6d28d9;
+
+margin-bottom:20px;
+
+}
+
+.input{
+
+width:100%;
+
+padding:16px;
+
+margin-bottom:18px;
+
+border:2px solid #ddd;
+
+border-radius:15px;
+
+font-size:16px;
+
+outline:none;
+
+transition:.3s;
+
+}
+
+.input:focus{
+
+border-color:#6d28d9;
+
+}
+
+textarea{
+
+resize:none;
+
+height:180px;
+
+}
+
+button{
+
+width:100%;
+
+padding:18px;
+
+background:#6d28d9;
+
+border:none;
+
+border-radius:15px;
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#5b21b6;
+
+transform:translateY(-3px);
+
+}
+
+.info{
+
+margin-bottom:25px;
+
+padding:20px;
+
+background:#f5f5ff;
+
+border-radius:15px;
+
+}
+
+.info h3{
+
+color:#2563eb;
+
+margin-bottom:8px;
+
+}
+
+.social{
+
+display:flex;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+margin-top:20px;
+
+}
+
+.social button{
+
+width:auto;
+
+padding:12px 20px;
+
+background:#2563eb;
+
+}
+
+.social button:hover{
+
+background:#1d4ed8;
+
+}
+
+footer{
+
+margin-top:50px;
+
+padding:30px;
+
+text-align:center;
+
+color:#666;
+
+}
+
+@media(max-width:900px){
+
+.container{
+
+grid-template-columns:1fr;
+
+}
+
+header h1{
+
+font-size:38px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Entre em Contato</h1>
+
+<p>
+
+Estamos prontos para ouvir você.
+
+</p>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Envie uma mensagem</h2>
+
+<form id="formContato">
+
+<input
+class="input"
+type="text"
+placeholder="Seu nome"
+required>
+
+<input
+class="input"
+type="email"
+placeholder="Seu e-mail"
+required>
+
+<input
+class="input"
+type="text"
+placeholder="Assunto"
+required>
+
+<textarea
+class="input"
+placeholder="Digite sua mensagem..."
+required></textarea>
+
+<button type="submit">
+
+Enviar Mensagem
+
+</button>
+
+</form>
+
+</div>
+
+<div class="card">
+
+<h2>Informações</h2>
+
+<div class="info">
+
+<h3>📧 E-mail</h3>
+
+<p>contato@inspire.com</p>
+
+</div>
+
+<div class="info">
+
+<h3>📱 WhatsApp</h3>
+
+<p>(11) 99999-9999</p>
+
+</div>
+
+<div class="info">
+
+<h3>📍 Localização</h3>
+
+<p>São Paulo • Brasil</p>
+
+</div>
+
+<div class="info">
+
+<h3>🕒 Atendimento</h3>
+
+<p>
+
+Segunda a Sexta<br>
+
+09:00 às 18:00
+
+</p>
+
+</div>
+
+<h2>Redes Sociais</h2>
+
+<div class="social">
+
+<button type="button">Instagram</button>
+
+<button type="button">Facebook</button>
+
+<button type="button">LinkedIn</button>
+
+<button type="button">X</button>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Inspire Entertainment • Todos os direitos reservados.
+
+</footer>
+
+<script>
+
+const form=document.getElementById("formContato");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Sua mensagem foi enviada com sucesso! Em breve nossa equipe entrará em contato.");
+
+form.reset();
+
+});
+
+</script>
+
+</body>
+
+</html>
