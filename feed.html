@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Feed - Inspire Entertainment</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,646 +22,1024 @@
 body{
     background:#fff7f8;
     color:#222;
+    overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* ===========================
+   NAVBAR
+=========================== */
 
 .navbar{
+
     position:fixed;
     top:0;
+    left:0;
+
     width:100%;
-    background:rgba(255,255,255,.85);
-    backdrop-filter:blur(20px);
+
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     padding:15px 40px;
-    z-index:1000;
+
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(20px);
+
     border-bottom:1px solid #eee;
+
+    z-index:1000;
+
 }
 
 .logo{
+
     font-size:28px;
     font-weight:700;
     color:#7c3aed;
+
+}
+
+.search{
+
+    flex:1;
+    display:flex;
+    justify-content:center;
+    margin:0 30px;
+
 }
 
 .search input{
-    width:300px;
-    padding:12px;
+
+    width:100%;
+    max-width:420px;
+
+    padding:12px 18px;
+
     border:none;
-    border-radius:20px;
+    border-radius:30px;
+
     background:#f3f4f6;
+
+    outline:none;
+
 }
 
 .nav-icons{
+
     display:flex;
-    gap:15px;
+    gap:12px;
+
 }
 
 .nav-btn{
-    padding:10px 20px;
+
     border:none;
-    border-radius:20px;
+    padding:10px 20px;
+
     background:#a855f7;
     color:white;
+
+    border-radius:25px;
+
     cursor:pointer;
+
+    transition:.3s;
+
 }
 
-/* LAYOUT */
+.nav-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+   LAYOUT
+=========================== */
 
 .container{
+
     display:flex;
-    margin-top:90px;
+    margin-top:95px;
+
 }
 
 .sidebar{
+
     width:260px;
-    padding:20px;
     position:fixed;
+
+    left:0;
+
+    padding:20px;
+
     height:100vh;
+
 }
 
 .menu{
+
     background:white;
+
     border-radius:25px;
+
     padding:20px;
+
     box-shadow:0 10px 25px rgba(0,0,0,.08);
+
 }
 
 .menu a{
+
     display:block;
+
     text-decoration:none;
-    color:#333;
+
+    color:#444;
+
     padding:15px;
+
     border-radius:15px;
+
+    transition:.3s;
+
     margin-bottom:10px;
+
 }
 
 .menu a:hover{
+
     background:#f3e8ff;
+
+    color:#7c3aed;
+
 }
 
 .feed{
+
     width:700px;
+
     margin:auto;
-}
 
-.create-post{
-    background:white;
-    padding:25px;
-    border-radius:25px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    margin-bottom:25px;
-}
-
-.create-post textarea{
-    width:100%;
-    border:none;
-    background:#f8fafc;
-    padding:15px;
-    border-radius:15px;
-    resize:none;
-    height:100px;
-}
-
-.post-btn{
-    margin-top:15px;
-    padding:12px 25px;
-    border:none;
-    border-radius:20px;
-    background:#a855f7;
-    color:white;
-    cursor:pointer;
-}
-
-.post{
-    background:white;
-    border-radius:25px;
-    padding:20px;
-    margin-bottom:25px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-}
-
-.post-header{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.post-header img{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-}
-
-.post-image{
-    width:100%;
-    border-radius:20px;
-    margin-top:15px;
-}
-
-.actions{
-    display:flex;
-    gap:20px;
-    margin-top:15px;
-}
-
-.action{
-    cursor:pointer;
 }
 
 .right-panel{
+
     width:300px;
+
     padding:20px;
+
 }
 
 .card{
+
     background:white;
+
     padding:20px;
+
     border-radius:25px;
+
     box-shadow:0 10px 25px rgba(0,0,0,.08);
+
 }
 
-@media(max-width:1100px){
+.create-post{
 
-.sidebar{
+    background:white;
+
+    padding:25px;
+
+    border-radius:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    margin-bottom:25px;
+
+}
+
+.create-post textarea{
+
+    width:100%;
+
+    height:110px;
+
+    resize:none;
+
+    border:none;
+
+    border-radius:18px;
+
+    padding:15px;
+
+    background:#f8fafc;
+
+    outline:none;
+
+}
+
+.post-btn{
+
+    margin-top:15px;
+
+    background:#a855f7;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 24px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+}
+
+.post{
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:20px;
+
+    margin-bottom:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.post-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.post-header img{
+
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+
+}
+
+.post-image{
+
+    width:100%;
+
+    margin-top:15px;
+
+    border-radius:18px;
+
+}
+
+.actions{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:15px;
+
+}
+
+.action{
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.action:hover{
+
+    color:#7c3aed;
+
+}
+
+.comments-area{
+
     display:none;
+
+    margin-top:15px;
+
 }
 
+.comment-input{
+
+    width:100%;
+
+    padding:12px;
+
+    border-radius:15px;
+
+    border:1px solid #ddd;
+
+    margin-bottom:10px;
+
+}
+
+.comments-area button{
+
+    background:#a855f7;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:15px;
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.navbar{
+
+    flex-wrap:wrap;
+
+    padding:12px;
+
+}
+
+.logo{
+
+    width:100%;
+    text-align:center;
+
+    margin-bottom:10px;
+
+}
+
+.search{
+
+    width:100%;
+    margin:0;
+
+}
+
+.search input{
+
+    max-width:100%;
+
+}
+
+.nav-icons{
+
+    width:100%;
+
+    margin-top:10px;
+
+    justify-content:space-between;
+
+}
+
+.nav-btn{
+
+    flex:1;
+
+    font-size:13px;
+
+    margin:0 5px;
+
+}
+
+.sidebar,
 .right-panel{
+
     display:none;
+
+}
+
+.container{
+
+    display:block;
+
+    margin-top:170px;
+
 }
 
 .feed{
-    width:95%;
+
+    width:100%;
+
+    padding:12px;
+
+}
+
+.post{
+
+    border-radius:18px;
+
+}
+
+.create-post{
+
+    border-radius:18px;
+
+}
+
+.post-header img{
+
+    width:45px;
+    height:45px;
+
+}
+
+.post-image{
+
+    border-radius:15px;
+
+}
+
+.actions{
+
+    font-size:14px;
+
+}
+
+}
+
+/* Barra inferior mobile */
+
+.mobile-nav{
+
+    display:none;
+
+}
+
+@media(max-width:768px){
+
+.mobile-nav{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    position:fixed;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+
+    height:65px;
+
+    background:white;
+
+    border-top:1px solid #ddd;
+
+    z-index:999;
+
+}
+
+.mobile-nav a{
+
+    text-decoration:none;
+
+    color:#7c3aed;
+
+    font-size:24px;
+
+}
+
+body{
+
+    padding-bottom:80px;
+
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
-
 <nav class="navbar">
 
-<div class="logo">
-INSPIRE
+    <div class="logo">
+        INSPIRE
+    </div>
+
+    <div class="search">
+    <input
+        type="text"
+        placeholder="Pesquisar artistas e projetos..."
+        onclick="window.location.href='pesquisa.html'">
 </div>
 
-<div class="search">
-<input placeholder="Pesquisar artistas e projetos...">
-</div>
+    <div class="nav-icons">
 
-<div class="nav-icons">
+        <button class="nav-btn"
+        onclick="location.href='mensagens.html'">
+            💬 Mensagens
+        </button>
 
-<button class="nav-btn"
-onclick="location.href='mensagens.html'">
-💬 Mensagens
-</button>
+        <button class="nav-btn"
+        onclick="location.href='perfil.html'">
+            👤 Perfil
+        </button>
 
-<button class="nav-btn"
-onclick="location.href='perfil.html'">
-👤 Perfil
-</button>
-
-</div>
+    </div>
 
 </nav>
 
 <div class="container">
 
-<aside class="right-sidebar">
+    <aside class="sidebar">
 
-<div class="menu">
+        <div class="menu">
 
-<a href="feed.html">🏠 Início</a>
+            <a href="projetoteste.html">🏠 Início</a>
 
-<a href="perfil.html">👤 Perfil</a>
+            <a href="perfil.html">👤 Perfil</a>
 
-<a href="mensagens.html">💬 Mensagens</a>
+            <a href="mensagens.html">💬 Mensagens</a>
 
-<a href="projetos.html">🎬 Projetos</a>
+            <a href="projetos.html">🎬 Projetos</a>
 
-<a href="inspire-ai.html">🤖 Inspire AI</a>
+            <a href="inspire-ai.html">🤖 Inspire AI</a>
 
-<a href="configuracoes.html">⚙ Configurações</a>
+            <a href="configurações.html">⚙ Configurações</a>
+
+        </div>
+
+    </aside>
+
+    <main class="feed">
+
+        <div class="create-post">
+
+            <h3>Criar publicação</h3>
+
+            <textarea
+            id="postText"
+            placeholder="Compartilhe sua criatividade..."></textarea>
+
+            <button
+            class="post-btn"
+            onclick="createPost()">
+
+                Publicar
+
+            </button>
+
+        </div>
+
+        <div id="posts">
+
+            <!-- POST 1 -->
+
+            <div class="post">
+
+                <div class="post-header">
+
+                    <img src="https://i.pravatar.cc/100?img=20">
+
+                    <div>
+
+                        <h4>Luna Arts</h4>
+
+                        <p>@lunaarts</p>
+
+                    </div>
+
+                </div>
+
+                <p style="margin-top:15px">
+
+                    Buscando paisagens para meu album que sai em breve!!! ✨
+
+                </p>
+
+                <img
+                class="post-image"
+                src="https://picsum.photos/800/400?1">
+
+                <div class="actions">
+
+                    <div
+                    class="action like-btn"
+                    onclick="toggleLike(this)">
+
+                        ❤️ <span>12400</span>
+
+                    </div>
+
+                    <div
+                    class="action"
+                    onclick="openComments(this)">
+
+                        💬 Comentários
+
+                    </div>
+
+                    <div
+                    class="action"
+                    onclick="sharePost()">
+
+                        🔄 Compartilhar
+
+                    </div>
+
+                    <div
+                    class="action"
+                    onclick="savePost(this)">
+
+                        🔖 Salvar
+
+                    </div>
+
+                </div>
+
+                <div class="comments-area">
+
+                    <input
+                    class="comment-input"
+                    placeholder="Escreva um comentário...">
+
+                    <button
+                    onclick="sendComment(this)">
+
+                        Enviar
+
+                    </button>
+
+                    <div class="comments-list"></div>
+
+                </div>
+
+            </div>
+
+            <!-- POST 2 -->
+
+            <div class="post">
+
+                <div class="post-header">
+
+                    <img src="https://i.pravatar.cc/100?img=30">
+
+                    <div>
+
+                        <h4>Anna Studio</h4>
+
+                        <p>@aurora</p>
+
+                    </div>
+
+                </div>
+
+                <p style="margin-top:15px">
+
+                    Procurando novos meios de arte!!! 🎬
+
+                </p>
+
+                <img
+                class="post-image"
+                src="https://picsum.photos/800/400?2">
+
+                <div class="actions">
+
+                    <div
+                    class="action like-btn"
+                    onclick="toggleLike(this)">
+
+                        ❤️ <span>8500</span>
+
+                    </div>
+
+                    <div
+                    class="action"
+                    onclick="openComments(this)">
+
+                        💬 Comentários
+
+                    </div>
+
+                    <div
+                    class="action"
+                    onclick="sharePost()">
+
+                        🔄 Compartilhar
+
+                    </div>
+
+                    <div
+                    class="action"
+                    onclick="savePost(this)">
+
+                        🔖 Salvar
+
+                    </div>
+
+                </div>
+
+                <div class="comments-area">
+
+                    <input
+                    class="comment-input"
+                    placeholder="Escreva um comentário...">
+
+                    <button
+                    onclick="sendComment(this)">
+
+                        Enviar
+
+                    </button>
+
+                    <div class="comments-list"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <aside class="right-panel">
+
+        <div class="card">
+
+            <h3>Comunidade Inspire</h3>
+
+            <br>
+
+            <p>👥 5.000+ artistas</p>
+
+            <p>🎬 800+ projetos</p>
+
+            <p>💜 2.000+ conexões</p>
+
+        </div>
+
+    </aside>
 
 </div>
 
-</aside>
+<!-- Barra inferior Mobile -->
 
-<main class="feed">
+<nav class="mobile-nav">
 
-<div class="create-post">
+    <a href="feed.html">🏠</a>
 
-<h3>Criar publicação</h3>
+    <a href="projetos.html">🎬</a>
 
-<textarea
-id="postText"
-placeholder="Compartilhe sua criatividade..."></textarea>
+    <a href="mensagens.html">💬</a>
 
-<button
-class="post-btn"
-onclick="createPost()">
+    <a href="inspire-ai.html">🤖</a>
 
-Publicar
+    <a href="perfil.html">👤</a>
 
-</button>
+</nav>
+    <script>
 
-</div>
-
-<div id="posts">
-
-<!-- POST 1 -->
-
-<div class="post">
-
-<div class="post-header">
-
-<img src="https://i.pravatar.cc/100?img=20">
-
-<div>
-
-<h4>Luna Arts</h4>
-
-<p>@lunaarts</p>
-
-</div>
-
-</div>
-
-<p style="margin-top:15px">
-
-Finalizei a arte do meu novo webtoon ✨
-
-</p>
-
-<img
-class="post-image"
-src="https://picsum.photos/800/400?1">
-
-<div class="actions">
-
-<div
-class="action like-btn"
-onclick="toggleLike(this)">
-
-❤️ <span>12400</span>
-
-</div>
-
-<div
-class="action"
-onclick="openComments(this)">
-
-💬 Comentários
-
-</div>
-
-<div
-class="action"
-onclick="sharePost()">
-
-🔄 Compartilhar
-
-</div>
-
-<div
-class="action"
-onclick="savePost(this)">
-
-🔖 Salvar
-
-</div>
-
-</div>
-
-<div class="comments-area">
-
-<input
-class="comment-input"
-placeholder="Escreva um comentário...">
-
-<button
-onclick="sendComment(this)">
-
-Enviar
-
-</button>
-
-<div class="comments-list"></div>
-
-</div>
-
-<!-- POST 2 -->
-
-<div class="post">
-
-<div class="post-header">
-
-<img src="https://i.pravatar.cc/100?img=30">
-
-<div>
-
-<h4>Anna Studio</h4>
-
-<p>@aurora</p>
-
-</div>
-
-</div>
-
-<p style="margin-top:15px">
-
-Buscando dubladores para novo curta animado 🎬
-
-</p>
-
-<img
-class="post-image"
-src="https://picsum.photos/800/400?2">
-
-<div class="actions">
-
-<div
-class="action like-btn"
-onclick="toggleLike(this)">
-
-❤️ <span>8.500</span>
-
-</div>
-
-<div
-class="action"
-onclick="openComments(this)">
-
-💬 Comentários
-
-</div>
-
-<div
-class="action"
-onclick="sharePost()">
-
-🔄 Compartilhar
-
-</div>
-
-<div
-class="action"
-onclick="savePost(this)">
-
-🔖 Salvar
-
-</div>
-
-</div>
-
-<div class="comments-area">
-
-<input
-class="comment-input"
-placeholder="Escreva um comentário...">
-
-<button
-onclick="sendComment(this)">
-
-Enviar
-
-</button>
-
-<div class="comments-list"></div>
-
-</div>
-
-</div>
-
-</main>
-
-<aside class="right-panel">
-
-<div class="card">
-
-<h3>Comunidade Inspire</h3>
-
-<br>
-
-<p>👥 5.000+ artistas</p>
-
-<p>🎬 800+ projetos</p>
-
-<p>💜 2.000+ conexões</p>
-
-</div>
-
-</aside>
-
-</div>
-
-<script>
+// =========================
+// CRIAR POST
+// =========================
 
 function createPost(){
 
-const text =
-document
-.getElementById(
-"postText"
-).value;
+    const text =
+    document.getElementById("postText").value.trim();
 
-if(text===""){
-return;
+    if(text===""){
+        alert("Escreva algo antes de publicar.");
+        return;
+    }
+
+    const posts =
+    document.getElementById("posts");
+
+    const post =
+    document.createElement("div");
+
+    post.className="post";
+
+    post.innerHTML=`
+
+    <div class="post-header">
+
+        <img src="https://i.pravatar.cc/100?img=12">
+
+        <div>
+
+            <h4>Você</h4>
+
+            <p>@usuario</p>
+
+        </div>
+
+    </div>
+
+    <p style="margin-top:15px;">
+        ${text}
+    </p>
+
+    <div class="actions">
+
+        <div
+        class="action like-btn"
+        onclick="toggleLike(this)">
+            ❤️ <span>0</span>
+        </div>
+
+        <div
+        class="action"
+        onclick="openComments(this)">
+            💬 Comentários
+        </div>
+
+        <div
+        class="action"
+        onclick="sharePost()">
+            🔄 Compartilhar
+        </div>
+
+        <div
+        class="action"
+        onclick="savePost(this)">
+            🔖 Salvar
+        </div>
+
+    </div>
+
+    <div class="comments-area">
+
+        <input
+        class="comment-input"
+        placeholder="Escreva um comentário...">
+
+        <button
+        onclick="sendComment(this)">
+            Enviar
+        </button>
+
+        <div class="comments-list"></div>
+
+    </div>
+
+    `;
+
+    posts.prepend(post);
+
+    document.getElementById("postText").value="";
+
 }
 
-const posts =
-document
-.getElementById(
-"posts"
-);
+// =========================
+// CURTIR
+// =========================
 
-const post =
-document.createElement(
-"div"
-);
-
-post.className="post";
-
-post.innerHTML=`
-
-<div class="post-header">
-
-<img src="https://i.pravatar.cc/100?img=12">
-
-<div>
-
-<h4>Você</h4>
-
-<p>@usuario</p>
-
-</div>
-
-</div>
-
-<p style="margin-top:15px">
-
-${text}
-
-</p>
-
-<div class="actions">
-
-<div class="action">❤️ 0</div>
-
-<div class="action">💬 0</div>
-
-<div class="action">🔄 Compartilhar</div>
-
-</div>
-
-`;
-
-posts.prepend(post);
-
-document
-.getElementById(
-"postText"
-).value="";
-
-}
 function toggleLike(btn){
 
-btn.classList.toggle(
-"liked"
-);
+    btn.classList.toggle("liked");
 
-const span =
-btn.querySelector(
-"span"
-);
+    const span =
+    btn.querySelector("span");
 
-let likes =
-parseInt(
-span.innerText
-);
+    let likes =
+    parseInt(span.innerText);
 
-if(
-btn.classList.contains(
-"liked"
-)
-){
+    if(btn.classList.contains("liked")){
 
-likes++;
+        likes++;
 
-}else{
+        btn.style.color="#ff0055";
 
-likes--;
+    }else{
+
+        likes--;
+
+        btn.style.color="#333";
+
+    }
+
+    span.innerText=likes;
 
 }
 
-span.innerText = likes;
-
-}
+// =========================
+// COMENTÁRIOS
+// =========================
 
 function openComments(btn){
 
-const area =
-btn.parentElement
-.nextElementSibling;
+    const area =
+    btn.parentElement.nextElementSibling;
 
-if(
-area.style.display==="block"
-){
+    if(area.style.display==="block"){
 
-area.style.display="none";
+        area.style.display="none";
 
-}else{
+    }else{
 
-area.style.display="block";
+        area.style.display="block";
 
-}
+    }
 
 }
 
 function sendComment(btn){
 
-const area =
-btn.parentElement;
+    const area =
+    btn.parentElement;
 
-const input =
-area.querySelector(
-".comment-input"
-);
+    const input =
+    area.querySelector(".comment-input");
 
-if(
-input.value===""
-){
+    if(input.value.trim()===""){
+        return;
+    }
 
-return;
+    const list =
+    area.querySelector(".comments-list");
 
-}
+    const comment =
+    document.createElement("div");
 
-const list =
-area.querySelector(
-".comments-list"
-);
+    comment.style.marginTop="10px";
+    comment.style.padding="10px";
+    comment.style.borderRadius="12px";
+    comment.style.background="#f8fafc";
 
-const comment =
-document.createElement(
-"div"
-);
+    comment.innerHTML="<b>Você:</b> "+input.value;
 
-comment.className=
-"comment";
+    list.appendChild(comment);
 
-comment.innerText=
-"Você: " +
-input.value;
-
-list.appendChild(
-comment
-);
-
-input.value="";
+    input.value="";
 
 }
+
+// =========================
+// SALVAR
+// =========================
 
 function savePost(btn){
 
-btn.classList.toggle(
-"saved"
-);
+    btn.classList.toggle("saved");
 
-if(
-btn.classList.contains(
-"saved"
-)
-){
+    if(btn.classList.contains("saved")){
 
-btn.innerText=
-"✅ Salvo";
+        btn.innerHTML="✅ Salvo";
 
-}else{
+    }else{
 
-btn.innerText=
-"🔖 Salvar";
+        btn.innerHTML="🔖 Salvar";
+
+    }
 
 }
 
-}
+// =========================
+// COMPARTILHAR
+// =========================
 
 function sharePost(){
 
-navigator.clipboard.writeText(
-window.location.href
-);
+    navigator.clipboard.writeText(window.location.href);
 
-alert(
-"Link copiado!"
-);
+    alert("✅ Link copiado para a área de transferência!");
 
 }
+
+// =========================
+// ENTER PUBLICA
+// =========================
+
+document
+.getElementById("postText")
+.addEventListener("keydown",function(e){
+
+    if(e.ctrlKey && e.key==="Enter"){
+
+        createPost();
+
+    }
+
+});
+
 </script>
 
 </body>
+
 </html>
