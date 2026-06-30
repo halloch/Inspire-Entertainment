@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pesquisa - Inspire Entertainment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#fff7f8,#f3e8ff);
+min-height:100vh;
+}
+
+/* NAVBAR */
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:rgba(255,255,255,.7);
+backdrop-filter:blur(18px);
+border-bottom:1px solid #eee;
+z-index:999;
+}
+
+.logo{
+font-size:28px;
+font-weight:800;
+color:#7c3aed;
+letter-spacing:1px;
+}
+
+/* CONTAINER */
+.container{
+max-width:1000px;
+margin:120px auto;
+padding:20px;
+}
+
+/* SEARCH */
+.search-box{
+display:flex;
+gap:12px;
+margin-bottom:25px;
+}
+
+.search-box input{
+flex:1;
+padding:15px 18px;
+border:none;
+border-radius:40px;
+background:#f3f4f6;
+outline:none;
+font-size:15px;
+transition:.3s;
+}
+
+.search-box input:focus{
+background:white;
+box-shadow:0 0 0 3px rgba(124,58,237,.15);
+}
+
+.search-box button{
+padding:15px 22px;
+border:none;
+background:linear-gradient(135deg,#a855f7,#ec4899);
+color:white;
+border-radius:40px;
+cursor:pointer;
+transition:.3s;
+font-weight:600;
+}
+
+.search-box button:hover{
+transform:scale(1.05);
+}
+
+/* FILTERS */
+.filters{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:30px;
+}
+
+.filter{
+padding:10px 18px;
+background:white;
+border-radius:20px;
+cursor:pointer;
+box-shadow:0 6px 15px rgba(0,0,0,.06);
+transition:.3s;
+font-size:14px;
+}
+
+.filter:hover{
+background:#f3e8ff;
+transform:translateY(-2px);
+}
+
+.filter.active{
+background:#7c3aed;
+color:white;
+}
+
+/* RESULTS */
+.result{
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:white;
+padding:18px;
+border-radius:20px;
+margin-bottom:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.06);
+transition:.3s;
+animation:fade .3s ease;
+}
+
+.result:hover{
+transform:translateY(-3px);
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(10px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.left{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.left img{
+width:60px;
+height:60px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid #f3e8ff;
+}
+
+.info h3{
+font-size:16px;
+color:#222;
+}
+
+.info p{
+font-size:13px;
+color:#666;
+}
+
+/* BUTTONS */
+.buttons{
+display:flex;
+gap:10px;
+}
+
+.buttons button{
+border:none;
+padding:10px 14px;
+border-radius:14px;
+cursor:pointer;
+font-size:13px;
+transition:.2s;
+}
+
+.buttons button:hover{
+transform:scale(1.05);
+}
+
+.profile{
+background:#7c3aed;
+color:white;
+}
+
+.connect{
+background:#ec4899;
+color:white;
+}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+
+.navbar{
+padding:15px;
+}
+
+.search-box{
+flex-direction:column;
+}
+
+.result{
+flex-direction:column;
+align-items:flex-start;
+gap:15px;
+}
+
+.buttons{
+width:100%;
+}
+
+.buttons button{
+flex:1;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<div class="logo">INSPIRE</div>
+</div>
+
+<div class="container">
+
+<div class="search-box">
+<input id="search" placeholder="Pesquisar artistas, projetos ou empresas...">
+<button onclick="pesquisar()">Buscar</button>
+</div>
+
+<div class="filters">
+<div class="filter active" onclick="setFilter('all')">Todos</div>
+<div class="filter" onclick="setFilter('artist')">Artistas</div>
+<div class="filter" onclick="setFilter('project')">Projetos</div>
+<div class="filter" onclick="setFilter('company')">Empresas</div>
+</div>
+
+<div id="results">
+
+<div class="result" data-type="artist">
+<div class="left">
+<img src="https://i.pravatar.cc/100?img=20">
+<div class="info">
+<h3>Luna Arts</h3>
+<p>Produtora Musical • São Paulo</p>
+</div>
+</div>
+<div class="buttons">
+<button class="profile">Ver Perfil</button>
+<button class="connect">Conectar</button>
+</div>
+</div>
+
+<div class="result" data-type="artist">
+<div class="left">
+<img src="https://i.pravatar.cc/100?img=30">
+<div class="info">
+<h3>Anna Studio</h3>
+<p>Diretora Criativa</p>
+</div>
+</div>
+<div class="buttons">
+<button class="profile">Ver Perfil</button>
+<button class="connect">Conectar</button>
+</div>
+</div>
+
+<div class="result" data-type="project">
+<div class="left">
+<img src="https://picsum.photos/100?5">
+<div class="info">
+<h3>Projeto Aurora</h3>
+<p>Curta-metragem • Cinema</p>
+</div>
+</div>
+<div class="buttons">
+<button class="profile">Abrir</button>
+<button class="connect">Participar</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+
+let currentFilter = "all";
+
+/* FILTRO */
+function setFilter(type){
+currentFilter = type;
+
+document.querySelectorAll(".filter")
+.forEach(f=>f.classList.remove("active"));
+
+event.target.classList.add("active");
+
+applyFilters();
+}
+
+/* BUSCA */
+function pesquisar(){
+applyFilters();
+}
+
+/* FILTRO + BUSCA */
+function applyFilters(){
+
+const text = document.getElementById("search").value.toLowerCase();
+
+document.querySelectorAll(".result").forEach(item=>{
+
+const matchText = item.innerText.toLowerCase().includes(text);
+const matchType = currentFilter === "all" || item.dataset.type === currentFilter;
+
+item.style.display = (matchText && matchType) ? "flex" : "none";
+
+});
+
+}
+
+/* DEBOUNCE */
+let timeout;
+document.getElementById("search").addEventListener("keyup", ()=>{
+
+clearTimeout(timeout);
+timeout = setTimeout(applyFilters, 200);
+
+});
+
+</script>
+
+</body>
+</html>
